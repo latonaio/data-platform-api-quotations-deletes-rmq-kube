@@ -63,22 +63,20 @@ type SDC struct {
 	BusinessPartner  int      `json:"business_partner"`
 	ServiceLabel     string   `json:"service_label"`
 	APIType          string   `json:"api_type"`
-	Orders           Orders   `json:"Orders"`
+	Header           Header   `json:"Quotations"`
 	APISchema        string   `json:"api_schema"`
 	Accepter         []string `json:"accepter"`
 	Deleted          bool     `json:"deleted"`
 }
-type Orders struct {
+
+type Header struct {
 	OrderID              int     `json:"OrderID"`
 	IsMarkedForDeletion  *bool   `json:"IsMarkedForDeletion"`
 	Item                 []Item  `json:"Item"`
 }
+
 type Item struct {
-	OrderItem           int                  `json:"OrderItem"`
-	IsMarkedForDeletion *bool                `json:"IsMarkedForDeletion"`
-	ItemSchedulingLine  []ItemSchedulingLine `json:"ItemSchedulingLine"`
-}
-type ItemSchedulingLine struct {
-	ScheduleLine        int   `json:"ScheduleLine"`
-	IsMarkedForDeletion *bool `json:"IsMarkedForDeletion"`
+	OrderID             int     `json:"OrderID"`
+	OrderItem           int     `json:"OrderItem"`
+	IsMarkedForDeletion *bool   `json:"IsMarkedForDeletion"`
 }

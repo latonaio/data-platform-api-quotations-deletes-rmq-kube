@@ -13,7 +13,7 @@ func ConvertToHeader(rows *sql.Rows) (*Header, error) {
 	for rows.Next() {
 		i++
 		err := rows.Scan(
-			&header.OrderID,
+			&header.Quotation,
 		)
 		if err != nil {
 			fmt.Printf("err = %+v \n", err)
@@ -37,8 +37,8 @@ func ConvertToItem(rows *sql.Rows) (*[]Item, error) {
 		i++
 		item := Item{}
 		err := rows.Scan(
-			&item.OrderID,
-			&item.OrderItem,
+			&item.Quotation,
+			&item.QuotationItem,
 		)
 		if err != nil {
 			fmt.Printf("err = %+v \n", err)
@@ -53,32 +53,4 @@ func ConvertToItem(rows *sql.Rows) (*[]Item, error) {
 	}
 
 	return &items, nil
-}
-
-func ConvertToSchedule(rows *sql.Rows) (*[]ScheduleLine, error) {
-	defer rows.Close()
-	schedules := make([]ScheduleLine, 0)
-	i := 0
-
-	for rows.Next() {
-		i++
-		schedule := ScheduleLine{}
-		err := rows.Scan(
-			&schedule.OrderID,
-			&schedule.OrderItem,
-			&schedule.ScheduleLine,
-		)
-		if err != nil {
-			fmt.Printf("err = %+v \n", err)
-			return &schedules, err
-		}
-
-		schedules = append(schedules, schedule)
-	}
-	if i == 0 {
-		fmt.Printf("DBに対象のレコードが存在しません。")
-		return &schedules, nil
-	}
-
-	return &schedules, nil
 }

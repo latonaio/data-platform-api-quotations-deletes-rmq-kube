@@ -6,16 +6,14 @@
 	"api_status_code": 200,
 	"runtime_session_id": "boi9ar543dg91ipdnspi099u231280ab0v8af0ew",
 	"business_partner": 101,
-	"service_label": "ORDERS",
+	"service_label": "QUOTATIONS",
 	"api_type": "deletes",
-	"Orders": {
-		"OrderID": 4,
-		"HeaderDeliveryStatus":"NP",
+	"Quotations": {
+		"Quotation": 4,
 		"IsMarkedForDeletion": true
 	},
-	"api_schema": "DPFMOrdersDeletes",
+	"api_schema": "DPFMQuotationsDeletes",
 	"accepter": [
 		"Header"
-	],
-	"deleted": false
+	]
 }
